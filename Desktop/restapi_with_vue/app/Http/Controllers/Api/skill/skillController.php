@@ -7,9 +7,16 @@ use App\Http\Requests\StoreSkillRequest;
 use App\Http\Resources\skill\SkillResource;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use App\services\SkillService;
+
+
 
 class skillController extends Controller
 {
+    public function __construct(SkillService)
+    {
+        
+    }
     //
     public function index(){
         // return response()->json('skill index');
