@@ -30,10 +30,10 @@ class StoreSkillRequest extends FormRequest
             'name' => ['required', 'min:3', 'max:20'],
 
             // $this used for exception of id that helps in updated method
-            'slug' => ['required', 'unique:skills,slug,' . $this->skill->id]
+            // 'slug' => ['required', 'unique:skills,slug,' . $this->skill->id]
 
             // other method for validatating updated method in skills table which are prone to id
-            // 'slug' => ['required', ValidationRule::unique('skills')->ignore($this->skill)]
+            'slug' => ['required', ValidationRule::unique('skills')->ignore($this->skill)]
         ];
     }
 }

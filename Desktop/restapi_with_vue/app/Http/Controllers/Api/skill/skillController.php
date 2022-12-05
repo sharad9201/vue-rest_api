@@ -13,7 +13,7 @@ class skillController extends Controller
     //
     public function index(){
         // return response()->json('skill index');
-        return SkillResource::collection(Skill::paginate());
+        return SkillResource::collection(Skill::all());
     }
 
     public function show(Skill $skill){
@@ -27,6 +27,7 @@ class skillController extends Controller
     }
     
     public function update(StoreSkillRequest $request, Skill $skill){
+        
         $skill->update($request->validated());
         return response()->json('skill updated');
 
