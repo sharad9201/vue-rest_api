@@ -6,16 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSkillRequest;
 use App\Http\Resources\skill\SkillResource;
 use App\Models\Skill;
+use App\Services\SkillService;
 use Illuminate\Http\Request;
-use App\services\SkillService;
 
 
 
 class skillController extends Controller
 {
-    public function __construct(SkillService)
+    public function __construct(SkillService $skilled)
     {
-        
+        $this->service = $skilled;
     }
     //
     public function index(){
@@ -29,8 +29,16 @@ class skillController extends Controller
 
     public function store(StoreSkillRequest $request){
 
-        Skill::create($request->validated());
-        return response()->json('skill created');
+        // Skill::create($request->validated());
+        $data=$request->all();
+        $status = $this->service->store($data);
+        if ($status == 1){
+            return response()->json('skill created');
+
+        } else{
+        return response()->json('skill not created');
+
+        }
     }
     
     public function update(StoreSkillRequest $request, Skill $skill){

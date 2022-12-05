@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\skill;
+namespace App\Services;
 
 use App\Models\Skill;
 
